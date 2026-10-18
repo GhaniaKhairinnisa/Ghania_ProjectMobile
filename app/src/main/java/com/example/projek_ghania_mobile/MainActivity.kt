@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        //toolbar
         setSupportActionBar(binding.toolbar)
         supportActionBar?.title = ""
 
