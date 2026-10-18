@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.title = ""
 
-        // fragmenthome
         if (savedInstanceState == null) {
             replaceFragment(HomeFragment(), false)
         }
