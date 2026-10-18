@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
             replaceFragment(HomeFragment(), false)
         }
 
-        //button logout
         binding.btnLogout.setOnClickListener {
             MaterialAlertDialogBuilder(this)
                 .setTitle("Konfirmasi Logout")
