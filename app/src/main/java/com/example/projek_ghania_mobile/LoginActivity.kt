@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
                 editor.apply()
 
                 Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, BaseActivity::class.java))
                 finish()
             } else {
                 val errorMessage = if (user.isEmpty()) {

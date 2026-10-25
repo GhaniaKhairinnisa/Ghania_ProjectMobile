@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_beranda" android:icon="@drawable/home_button" android:title="Beranda" />
+    <item android:id="@+id/nav_jelajahi" android:icon="@android:drawable/ic_menu_search" android:title="Jelajahi" />
+    <item android:id="@+id/nav_kalender" android:icon="@android:drawable/ic_menu_today" android:title="Kalender" />
+    <item android:id="@+id/nav_tiket" android:icon="@drawable/ticket_button" android:title="Tiket" />
+    <item android:id="@+id/nav_profil" android:icon="@drawable/ic_profil" android:title="Profil" />
+</menu>

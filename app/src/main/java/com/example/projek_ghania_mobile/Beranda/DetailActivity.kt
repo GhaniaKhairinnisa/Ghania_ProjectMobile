@@ -1,12 +1,19 @@
-package com.example.projek_ghania_mobile
+package com.example.projek_ghania_mobile.Beranda
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.projek_ghania_mobile.BaseActivity
+import com.example.projek_ghania_mobile.R
+import com.example.projek_ghania_mobile.Tiket.TiketActivity
+import com.example.projek_ghania_mobile.WebViewActivity
 import com.example.projek_ghania_mobile.databinding.ActivityDetailBinding
+import com.google.android.material.snackbar.Snackbar
 
 class DetailActivity : AppCompatActivity() {
 
@@ -30,6 +37,24 @@ class DetailActivity : AppCompatActivity() {
             title = ""
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
+
+            setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+        }
+
+        // Aksi ketika tombol Peta diklik
+        binding.btnPeta.setOnClickListener {
+            val intent = Intent(this@DetailActivity, WebViewActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnBeliTiket.setOnClickListener {
+            Snackbar.make(binding.root, "Pilih Jenis Tiket",
+                Snackbar.LENGTH_LONG)
+                .setAction("Lihat Detail") {
+                    val intent = Intent(this@DetailActivity, TiketActivity::class.java)
+                    startActivity(intent)
+                }
+                .show()
         }
     }
 
