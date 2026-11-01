@@ -78,6 +78,24 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireContext(), DetailActivity::class.java)
             startActivity(intent)
         }
+
+        binding.chipGroupKategori.setOnCheckedStateChangeListener { group, checkedIds ->
+            val kategoriTerpilih = mutableListOf<String>()
+            for (id in checkedIds) {
+                val chip = group.findViewById<com.google.android.material.chip.Chip>(id)
+                chip?.let {
+                    kategoriTerpilih.add(it.text.toString())
+                }
+            }
+
+            val pesan = if (kategoriTerpilih.isNotEmpty()) {
+                "Kategori: ${kategoriTerpilih.joinToString(", ")}"
+            } else {
+                "Tidak ada kategori yang dipilih"
+            }
+
+            android.widget.Toast.makeText(requireContext(), pesan, android.widget.Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onDestroyView() {

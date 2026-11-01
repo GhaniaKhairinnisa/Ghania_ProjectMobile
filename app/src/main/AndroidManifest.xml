@@ -43,6 +43,23 @@
             android:name=".Tiket.TiketActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Tutorial.Tutorial1Activity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Tutorial.Tutorial2Activity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Tutorial.Tutorial3Activity"
+            android:exported="false"
+            android:theme="@style/Theme.Projek_Ghania_Mobile"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Tutorial.TutorialActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

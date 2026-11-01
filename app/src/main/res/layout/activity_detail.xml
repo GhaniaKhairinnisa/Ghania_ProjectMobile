@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/bg"
     tools:context=".Beranda.DetailActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -138,46 +138,61 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <androidx.gridlayout.widget.GridLayout
+                    android:id="@+id/gridTagsEvent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    app:columnCount="3"
+                    app:useDefaultMargins="true">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_tag_rounded"
+                        app:backgroundTint="@color/sun_yellow"
                         android:fontFamily="@font/nunito_bold"
-                        android:paddingHorizontal="16dp"
-                        android:background="@color/sun_yellow"
-                        android:paddingVertical="6dp"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="8dp"
                         android:text="BAZAR"
+                        android:textAlignment="center"
                         android:textColor="@color/deep_ink"
-                        android:textSize="11sp" />
+                        android:textSize="11sp"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill_horizontal" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:background="@color/lilac"
+                        android:background="@drawable/bg_tag_rounded"
                         android:fontFamily="@font/nunito_bold"
-                        android:paddingHorizontal="16dp"
-                        android:paddingVertical="6dp"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="8dp"
                         android:text="UMKM"
+                        android:textAlignment="center"
                         android:textColor="@color/deep_ink"
-                        android:textSize="11sp" />
+                        android:textSize="11sp"
+                        app:backgroundTint="@color/lilac"
+                        app:layout_column="1"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill_horizontal"
+                        app:layout_row="0" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:background="#E8EAF6"
+                        android:background="@drawable/bg_tag_rounded"
+                        app:backgroundTint="#E8EAF6"
                         android:fontFamily="@font/nunito_bold"
-                        android:paddingHorizontal="16dp"
-                        android:paddingVertical="6dp"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="8dp"
                         android:text="MUSIK"
+                        android:textAlignment="center"
                         android:textColor="@color/deep_ink"
-                        android:textSize="11sp" />
-                </LinearLayout>
+                        android:textSize="11sp"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill_horizontal" />
+
+                </androidx.gridlayout.widget.GridLayout>
 
                 <TextView
                     android:id="@+id/tvDetailTitle"
@@ -375,16 +390,18 @@
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-        <Button
-            android:id="@+id/btnBeliTiket"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:fontFamily="@font/nunito_extrabold"
-            android:text="Beli Tiket"
-            android:layout_gravity="bottom"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:backgroundTint="#FF6B6B" />
+
+    <Button
+        android:id="@+id/btnBeliTiket"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/nunito_extrabold"
+        android:text="Beli Tiket"
+        android:layout_gravity="bottom"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:backgroundTint="#FF6B6B" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

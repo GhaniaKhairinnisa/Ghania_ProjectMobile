@@ -157,44 +157,94 @@
             </LinearLayout>
 
             <HorizontalScrollView
+                android:id="@+id/scrollChipGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:scrollbars="none">
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="16dp"
+                android:scrollbars="none"
+                app:layout_constraintTop_toBottomOf="@id/etSearch"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-                <LinearLayout
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupKategori"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingBottom="4dp">
+                    app:singleLine="true"
+                    app:singleSelection="false"
+                    app:chipSpacingHorizontal="12dp">
 
-                    <Button
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipBazar"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
-                        android:layout_height="45dp"
-                        android:layout_marginEnd="12dp"
-                        android:fontFamily="@font/nunito_bold"
+                        android:layout_height="wrap_content"
                         android:text="Bazar"
-                        android:textColor="#20263A"
-                        android:backgroundTint="#FFD95A" />
+                        android:textColor="@color/deep_ink"
+                        android:fontFamily="@font/nunito_black"
+                        android:textStyle="bold"
+                        android:checkable="true"
+                        app:checkedIconVisible="true"
+                        app:chipBackgroundColor="@color/sun_yellow"
+                        app:chipCornerRadius="20dp"
+                        app:chipMinHeight="40dp"
+                        app:textStartPadding="16dp"
+                        app:textEndPadding="16dp"/>
 
-                    <Button
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipMusik"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
-                        android:layout_height="45dp"
-                        android:layout_marginEnd="12dp"
-                        android:fontFamily="@font/nunito_bold"
+                        android:layout_height="wrap_content"
                         android:text="Musik"
-                        android:textColor="#FFFFFF"
-                        android:backgroundTint="#1976D2" />
+                        android:fontFamily="@font/nunito_black"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:checkable="true"
+                        app:checkedIconVisible="true"
+                        app:chipBackgroundColor="@color/cobalt_blue"
+                        app:chipCornerRadius="20dp"
+                        app:chipMinHeight="40dp"
+                        app:textStartPadding="16dp"
+                        app:textEndPadding="16dp"/>
 
-                    <Button
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipPameran"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
-                        android:layout_height="45dp"
-                        android:fontFamily="@font/nunito_bold"
+                        android:layout_height="wrap_content"
                         android:text="Pameran"
-                        android:textColor="#FFFFFF"
-                        android:backgroundTint="#FF6B6B" />
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/nunito_black"
+                        android:textStyle="bold"
+                        android:checkable="true"
+                        app:checkedIconVisible="true"
+                        app:chipBackgroundColor="@color/coral"
+                        app:chipCornerRadius="20dp"
+                        app:chipMinHeight="40dp"
+                        app:textStartPadding="16dp"
+                        app:textEndPadding="16dp"/>
 
-                </LinearLayout>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipFestival"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Festival"
+                        android:textColor="@color/deep_ink"
+                        android:fontFamily="@font/nunito_black"
+                        android:textStyle="bold"
+                        android:checkable="true"
+                        app:checkedIconVisible="true"
+                        app:chipBackgroundColor="@color/sun_yellow"
+                        app:chipCornerRadius="20dp"
+                        app:chipMinHeight="40dp"
+                        app:textStartPadding="16dp"
+                        app:textEndPadding="16dp"/>
+
+
+                </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
 
             <com.google.android.material.card.MaterialCardView

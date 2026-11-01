@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardGambar"
+        android:layout_width="280dp"
+        android:layout_height="200dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="6dp"
+        app:strokeWidth="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <ImageView
+            android:id="@+id/ivTutorial"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/event1" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/nunito_extrabold"
+        android:text="Temukan Event Kreatif"
+        android:textAlignment="center"
+        android:textColor="#20263A"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvDesc"
+        app:layout_constraintTop_toBottomOf="@+id/cardGambar" />
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/nunito_regular"
+        android:lineSpacingExtra="6dp"
+        android:text="Eksplorasi berbagai bazar, pameran seni, dan pertunjukan musik di sekitarmu dengan mudah."
+        android:textAlignment="center"
+        android:textColor="#705D59"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

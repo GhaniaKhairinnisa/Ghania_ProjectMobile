@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import com.example.projek_ghania_mobile.Tutorial.TutorialActivity
 import com.example.projek_ghania_mobile.databinding.ActivitySplashScreenBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -33,13 +34,13 @@ class SplashScreenActivity : AppCompatActivity() {
         }
         lifecycleScope.launch {
             delay( 5000)
-            val intent = Intent(this@SplashScreenActivity, LoginActivity::class.java)
+            val intent = Intent(this@SplashScreenActivity, TutorialActivity::class.java)
             startActivity(intent)
             finish()
         }
         val btnEksplor = findViewById<Button>(R.id.btneksplor)
         btnEksplor.setOnClickListener {
-            val intent = Intent(this@SplashScreenActivity, LoginActivity::class.java)
+            val intent = Intent(this@SplashScreenActivity, TutorialActivity::class.java)
             startActivity(intent)
             finish()
         }
