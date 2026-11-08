@@ -1,3 +1,4 @@
+
 package com.example.projek_ghania_mobile
 
 import android.os.Bundle
@@ -19,14 +20,26 @@ class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         enableEdgeToEdge()
 
         binding = ActivityBaseBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
+        // Mengatur jarak terhadap status bar dan navigation bar Android
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+
+            val systemBars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars()
+            )
+
+            view.setPadding(
+                systemBars.left,
+                systemBars.top,
+                systemBars.right,
+                systemBars.bottom
+            )
+
             insets
         }
 
@@ -36,30 +49,37 @@ class BaseActivity : AppCompatActivity() {
 
         binding.bottomNavView.setOnItemSelectedListener {
             when (it.itemId) {
+
                 R.id.nav_beranda -> {
                     replaceFragment(HomeFragment())
                     true
                 }
+
                 R.id.nav_jelajahi -> {
                     replaceFragment(JelajahiFragment())
                     true
                 }
+
                 R.id.nav_kalender -> {
                     replaceFragment(KalenderFragment())
                     true
                 }
+
                 R.id.nav_tiket -> {
                     replaceFragment(TiketFragment())
                     true
                 }
+
                 R.id.nav_profil -> {
                     replaceFragment(ProfileFragment())
                     true
                 }
+
                 else -> false
             }
         }
     }
+
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(binding.fragmentContainer.id, fragment)

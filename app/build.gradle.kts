@@ -42,6 +42,7 @@ dependencies {
     implementation("androidx.gridlayout:gridlayout:1.0.0") // Tahap 4: GridLayout
     implementation("androidx.viewpager2:viewpager2:1.1.0") // Tahap 5: ViewPager2
     implementation("com.tbuonomo:dotsindicator:5.1.0") // Tahap 6: DotsIndicator
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)

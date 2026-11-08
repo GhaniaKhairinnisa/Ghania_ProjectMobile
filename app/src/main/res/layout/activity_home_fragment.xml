@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -64,6 +65,7 @@
             android:paddingHorizontal="20dp"
             android:paddingTop="12dp">
 
+            <!-- SAPAAN PENGGUNA -->
             <TextView
                 android:id="@+id/tvSapaan"
                 android:layout_width="wrap_content"
@@ -82,6 +84,7 @@
                 android:textColor="@color/secondary_text"
                 android:textSize="13sp" />
 
+            <!-- LOKASI -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -107,6 +110,7 @@
                     android:textSize="12sp" />
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- PENCARIAN DAN FILTER -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -156,6 +160,7 @@
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
+            <!-- KATEGORI EVENT -->
             <HorizontalScrollView
                 android:id="@+id/scrollChipGroup"
                 android:layout_width="match_parent"
@@ -190,7 +195,7 @@
                         app:chipCornerRadius="20dp"
                         app:chipMinHeight="40dp"
                         app:textStartPadding="16dp"
-                        app:textEndPadding="16dp"/>
+                        app:textEndPadding="16dp" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipMusik"
@@ -207,7 +212,7 @@
                         app:chipCornerRadius="20dp"
                         app:chipMinHeight="40dp"
                         app:textStartPadding="16dp"
-                        app:textEndPadding="16dp"/>
+                        app:textEndPadding="16dp" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipPameran"
@@ -224,7 +229,7 @@
                         app:chipCornerRadius="20dp"
                         app:chipMinHeight="40dp"
                         app:textStartPadding="16dp"
-                        app:textEndPadding="16dp"/>
+                        app:textEndPadding="16dp" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipFestival"
@@ -241,238 +246,95 @@
                         app:chipCornerRadius="20dp"
                         app:chipMinHeight="40dp"
                         app:textStartPadding="16dp"
-                        app:textEndPadding="16dp"/>
+                        app:textEndPadding="16dp" />
+
+
+                    <!-- KATEGORI UMKM -->
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipUMKM"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="UMKM"
+                        android:textColor="@color/deep_ink"
+                        android:fontFamily="@font/nunito_black"
+                        android:textStyle="bold"
+                        android:checkable="true"
+                        app:checkedIconVisible="true"
+                        app:chipBackgroundColor="@color/mint"
+                        app:chipCornerRadius="20dp"
+                        app:chipMinHeight="40dp"
+                        app:textStartPadding="16dp"
+                        app:textEndPadding="16dp" />
+
+                    <!-- KATEGORI KULINER -->
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipKuliner"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kuliner"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/nunito_black"
+                        android:textStyle="bold"
+                        android:checkable="true"
+                        app:checkedIconVisible="true"
+                        app:chipBackgroundColor="@color/coral"
+                        app:chipCornerRadius="20dp"
+                        app:chipMinHeight="40dp"
+                        app:textStartPadding="16dp"
+                        app:textEndPadding="16dp" />
+
+                    <!-- KATEGORI WORKSHOP -->
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipWorkshop"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Workshop"
+                        android:textColor="@color/deep_ink"
+                        android:fontFamily="@font/nunito_black"
+                        android:textStyle="bold"
+                        android:checkable="true"
+                        app:checkedIconVisible="true"
+                        app:chipBackgroundColor="@color/sun_yellow"
+                        app:chipCornerRadius="20dp"
+                        app:chipMinHeight="40dp"
+                        app:textStartPadding="16dp"
+                        app:textEndPadding="16dp" />
+
+                    <!-- KATEGORI KOMUNITAS -->
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipKomunitas"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Komunitas"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/nunito_black"
+                        android:textStyle="bold"
+                        android:checkable="true"
+                        app:checkedIconVisible="true"
+                        app:chipBackgroundColor="@color/cobalt_blue"
+                        app:chipCornerRadius="20dp"
+                        app:chipMinHeight="40dp"
+                        app:textStartPadding="16dp"
+                        app:textEndPadding="16dp" />
 
 
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
 
-            <com.google.android.material.card.MaterialCardView
+            <!-- DAFTAR EVENT DINAMIS -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvHomeEvent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="4dp"
-                app:strokeColor="#F0F0F0"
-                app:strokeWidth="1dp">
+                android:nestedScrollingEnabled="false"
+                android:clipToPadding="false"
+                android:overScrollMode="never" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="20dp">
-
-                    <ImageView
-                        android:id="@+id/ivEventImage"
-                        android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:background="#E0E0E0"
-                        android:scaleType="centerCrop"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/event_pku"/>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="12dp"
-                        android:orientation="horizontal"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="6dp"
-                            app:cardBackgroundColor="#FFFFFF"
-                            app:cardCornerRadius="12dp"
-                            app:strokeWidth="0dp">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/nunito_bold"
-                                android:paddingHorizontal="10dp"
-                                android:paddingVertical="4dp"
-                                android:text="BAZAR"
-                                android:textColor="#20263A"
-                                android:textSize="10sp" />
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="6dp"
-                            app:cardBackgroundColor="#FFFFFF"
-                            app:cardCornerRadius="12dp"
-                            app:strokeWidth="0dp">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/nunito_bold"
-                                android:paddingHorizontal="10dp"
-                                android:paddingVertical="4dp"
-                                android:text="UMKM"
-                                android:textColor="#20263A"
-                                android:textSize="10sp" />
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:cardBackgroundColor="#FFFFFF"
-                            app:cardCornerRadius="12dp"
-                            app:strokeWidth="0dp">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/nunito_bold"
-                                android:paddingHorizontal="10dp"
-                                android:paddingVertical="4dp"
-                                android:text="MUSIK"
-                                android:textColor="#20263A"
-                                android:textSize="10sp" />
-                        </com.google.android.material.card.MaterialCardView>
-                    </LinearLayout>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginEnd="12dp"
-                        app:cardBackgroundColor="#FFFFFF"
-                        app:cardCornerRadius="16dp"
-                        app:strokeWidth="0dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:padding="6dp"
-                            android:src="@drawable/heart"
-                            app:tint="@color/coral" />
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginBottom="12dp"
-                        app:cardBackgroundColor="#FFD95A"
-                        app:cardCornerRadius="14dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/ivEventImage"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:strokeWidth="0dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/nunito_bold"
-                            android:paddingHorizontal="10dp"
-                            android:paddingVertical="6dp"
-                            android:text="🔥 MULAI 02:14:36"
-                            android:textColor="#20263A"
-                            android:textSize="10sp" />
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginBottom="12dp"
-                        app:cardBackgroundColor="#E8EAF6"
-                        app:cardCornerRadius="14dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/ivEventImage"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:strokeWidth="0dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/nunito_bold"
-                            android:paddingHorizontal="10dp"
-                            android:paddingVertical="6dp"
-                            android:text="🏪 80+ Tenants"
-                            android:textColor="#1976D2"
-                            android:textSize="10sp" />
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <TextView
-                        android:id="@+id/tvLocationEvent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/nunito_bold"
-                        android:text="📍 Bandar Seni Raja Ali Haji"
-                        android:textColor="#1976D2"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ivEventImage" />
-
-                    <TextView
-                        android:id="@+id/tvEventTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="4dp"
-                        android:fontFamily="@font/nunito_extrabold"
-                        android:text="Riau Creative Fest 2026"
-                        android:textColor="#20263A"
-                        android:textSize="18sp"
-                        app:layout_constraintTop_toBottomOf="@+id/tvLocationEvent" />
-
-                    <TextView
-                        android:id="@+id/tvEventDateTime"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="6dp"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="📅 12 Okt 2026   ⏰ 09.00–20.00 WIB"
-                        android:textColor="#705D59"
-                        android:textSize="12sp"
-                        app:layout_constraintTop_toBottomOf="@+id/tvEventTitle" />
-
-                    <TextView
-                        android:id="@+id/tvLabelHarga"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/nunito_extrabold"
-                        android:text="TIKET MASUK"
-                        android:textColor="#705D59"
-                        android:textSize="10sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvEventDateTime" />
-
-                    <TextView
-                        android:id="@+id/tvEventPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_extrabold"
-                        android:text="Mulai Rp 25.000"
-                        android:textColor="#1976D2"
-                        android:textSize="20sp"
-                        app:layout_constraintStart_toStartOf="@+id/tvLabelHarga"
-                        app:layout_constraintTop_toBottomOf="@+id/tvLabelHarga" />
-
-                    <Button
-                        android:id="@+id/btnLihatEvent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/nunito_bold"
-                        android:text="Lihat Event"
-                        android:textColor="#FFFFFF"
-                        android:textSize="13sp"
-                        android:backgroundTint="#FF6B6B"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvEventPrice"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/tvLabelHarga" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
-
+            <!-- BANNER PENDAFTARAN TENANT -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -529,6 +391,7 @@
                     android:backgroundTint="@color/deep_ink" />
 
             </LinearLayout>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

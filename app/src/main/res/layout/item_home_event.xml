@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="4dp"
+    app:strokeColor="#F0F0F0"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp">
+
+        <!-- GAMBAR EVENT -->
+        <ImageView
+            android:id="@+id/ivEventImage"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#E0E0E0"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/event_pku" />
+
+        <!-- TAG KATEGORI EVENT -->
+        <LinearLayout
+            android:id="@+id/layoutEventTags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Tag akan dibuat secara dinamis melalui Adapter -->
+
+        </LinearLayout>
+
+        <!-- TOMBOL FAVORIT -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="16dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="6dp"
+                android:src="@drawable/heart"
+                app:tint="@color/coral" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- COUNTDOWN EVENT -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="#FFD95A"
+            app:cardCornerRadius="14dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivEventImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeWidth="0dp">
+
+            <TextView
+                android:id="@+id/tvEventCountdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="6dp"
+                android:text="🔥 MULAI 02:14:36"
+                android:textColor="#20263A"
+                android:textSize="10sp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- JUMLAH TENANT -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="#E8EAF6"
+            app:cardCornerRadius="14dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivEventImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:strokeWidth="0dp">
+
+            <TextView
+                android:id="@+id/tvEventTenants"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="6dp"
+                android:text="🏪 80+ Tenants"
+                android:textColor="#1976D2"
+                android:textSize="10sp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- LOKASI EVENT -->
+        <TextView
+            android:id="@+id/tvLocationEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="📍 Bandar Seni Raja Ali Haji"
+            android:textColor="#1976D2"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivEventImage" />
+
+        <!-- NAMA EVENT -->
+        <TextView
+            android:id="@+id/tvEventTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nunito_extrabold"
+            android:text="Riau Creative Fest 2026"
+            android:textColor="#20263A"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/tvLocationEvent" />
+
+        <!-- TANGGAL DAN WAKTU -->
+        <TextView
+            android:id="@+id/tvEventDateTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/nunito_regular"
+            android:text="📅 12 Okt 2026   ⏰ 09.00–20.00 WIB"
+            android:textColor="#705D59"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@+id/tvEventTitle" />
+
+        <!-- LABEL HARGA -->
+        <TextView
+            android:id="@+id/tvLabelHarga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/nunito_extrabold"
+            android:text="TIKET MASUK"
+            android:textColor="#705D59"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEventDateTime" />
+
+        <!-- HARGA EVENT -->
+        <TextView
+            android:id="@+id/tvEventPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_extrabold"
+            android:text="Mulai Rp 25.000"
+            android:textColor="#1976D2"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/tvLabelHarga"
+            app:layout_constraintTop_toBottomOf="@+id/tvLabelHarga" />
+
+        <!-- TOMBOL LIHAT EVENT -->
+        <Button
+            android:id="@+id/btnLihatEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#FF6B6B"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Lihat Event"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvEventPrice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvLabelHarga" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
