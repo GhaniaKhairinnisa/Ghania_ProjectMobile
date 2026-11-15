@@ -317,6 +317,14 @@ class HomeFragment : Fragment() {
         })
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        if (::homeEventAdapter.isInitialized) {
+            homeEventAdapter.perbaruiSemuaIkonFavorit()
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
 

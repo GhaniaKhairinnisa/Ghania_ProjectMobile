@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg"
+    android:paddingTop="12dp">
+
+    <LinearLayout
+        android:id="@+id/layoutEksplorasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jelajahi Berdasarkan Minat"
+            android:textColor="@color/deep_ink"
+            android:textSize="20sp"
+            android:fontFamily="@font/nunito_extrabold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Temukan keseruan sesuai minat kreatifmu!"
+            android:textColor="@color/secondary_text"
+            android:textSize="13sp"
+            android:fontFamily="@font/nunito_regular" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardCreativeMarket"
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/sun_yellow"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:src="@drawable/icon_market"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="Pasar Kreatif" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="Pasar Kreatif"
+                        android:textColor="@color/deep_ink"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/nunito_extrabold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bazar dan UMKM"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/nunito_regular" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMusicScene"
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/lilac"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:src="@drawable/icon_music"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="Dunia Musik" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="Dunia Musik"
+                        android:textColor="@color/deep_ink"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/nunito_extrabold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Musik dan Festival"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/nunito_regular" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardArtSpace"
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/mint"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:src="@drawable/icon_art"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="Ruang Seni" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="Ruang Seni"
+                        android:textColor="@color/deep_ink"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/nunito_extrabold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Seni dan Pameran"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/nunito_regular" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardCreativeClass"
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/coral"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:src="@android:drawable/ic_menu_edit"
+                        app:tint="@color/white"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="Kelas Kreatif" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="Kelas Kreatif"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/nunito_extrabold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lokakarya"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/nunito_regular" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Event Terbaru"
+            android:textColor="@color/deep_ink"
+            android:textSize="20sp"
+            android:fontFamily="@font/nunito_extrabold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Jelajahi berbagai event kreatif PopKraf"
+            android:textColor="@color/secondary_text"
+            android:textSize="13sp"
+            android:fontFamily="@font/nunito_regular" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvEvent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="100dp"
+        android:clipToPadding="false"
+        android:divider="@color/lilac"
+        android:dividerHeight="1dp"
+        android:scrollbars="none" />
+
+</LinearLayout>

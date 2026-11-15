@@ -3,5 +3,6 @@ package com.example.projek_ghania_mobile.Jelajahi
 data class JelajahiModel(
     val namaEvent: String,
     val lokasiEvent: String,
-    val gambarEvent: Int
+    val gambarEvent: Int,
+    val id: Int
 )

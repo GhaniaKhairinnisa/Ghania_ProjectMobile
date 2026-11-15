@@ -65,7 +65,6 @@
             android:paddingHorizontal="20dp"
             android:paddingTop="12dp">
 
-            <!-- SAPAAN PENGGUNA -->
             <TextView
                 android:id="@+id/tvSapaan"
                 android:layout_width="wrap_content"
@@ -84,7 +83,6 @@
                 android:textColor="@color/secondary_text"
                 android:textSize="13sp" />
 
-            <!-- LOKASI -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,7 +108,6 @@
                     android:textSize="12sp" />
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- PENCARIAN DAN FILTER -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -160,7 +157,6 @@
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
-            <!-- KATEGORI EVENT -->
             <HorizontalScrollView
                 android:id="@+id/scrollChipGroup"
                 android:layout_width="match_parent"
@@ -248,8 +244,6 @@
                         app:textStartPadding="16dp"
                         app:textEndPadding="16dp" />
 
-
-                    <!-- KATEGORI UMKM -->
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipUMKM"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
@@ -267,7 +261,6 @@
                         app:textStartPadding="16dp"
                         app:textEndPadding="16dp" />
 
-                    <!-- KATEGORI KULINER -->
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipKuliner"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
@@ -285,7 +278,6 @@
                         app:textStartPadding="16dp"
                         app:textEndPadding="16dp" />
 
-                    <!-- KATEGORI WORKSHOP -->
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipWorkshop"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
@@ -303,7 +295,6 @@
                         app:textStartPadding="16dp"
                         app:textEndPadding="16dp" />
 
-                    <!-- KATEGORI KOMUNITAS -->
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipKomunitas"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
@@ -325,7 +316,6 @@
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
 
-            <!-- DAFTAR EVENT DINAMIS -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvHomeEvent"
                 android:layout_width="match_parent"
@@ -334,7 +324,6 @@
                 android:clipToPadding="false"
                 android:overScrollMode="never" />
 
-            <!-- BANNER PENDAFTARAN TENANT -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.projek_ghania_mobile.FavoritManager
 import com.example.projek_ghania_mobile.R
 import com.example.projek_ghania_mobile.databinding.ItemHomeEventBinding
 import com.google.android.material.card.MaterialCardView
@@ -109,10 +110,53 @@ class HomeEventAdapter(
             )
         }
 
+        // Memeriksa status favorit event
+        perbaruiIkonFavorit(event, holder)
+
+        // Aksi tombol favorit
+        binding.cardFavorite.setOnClickListener {
+
+            val posisiSekarang = holder.bindingAdapterPosition
+
+            if (posisiSekarang != RecyclerView.NO_POSITION) {
+
+                FavoritManager.toggleFavorite(
+                    context,
+                    event.id
+                )
+
+                // Memperbarui warna ikon hati
+                perbaruiIkonFavorit(event, holder)
+            }
+        }
+
         // Aksi tombol Lihat Event
         binding.btnLihatEvent.setOnClickListener {
             onEventClick(event)
         }
+    }
+
+    // Mengatur warna ikon hati berdasarkan status favorit
+    private fun perbaruiIkonFavorit(
+        event: HomeEventModel,
+        holder: EventViewHolder
+    ) {
+
+        val sudahFavorit = FavoritManager.isFavorite(
+            context,
+            event.id
+        )
+
+        val warnaIkon = if (sudahFavorit) {
+            R.color.coral
+        } else {
+            android.R.color.darker_gray
+        }
+
+        holder.binding.ivFavorite.imageTintList =
+            android.content.res.ColorStateList.valueOf(
+                context.getColor(warnaIkon)
+            )
     }
 
     // Menghitung jumlah event yang ditampilkan
@@ -141,6 +185,11 @@ class HomeEventAdapter(
 
         kataKunciPencarian = kataKunci.trim()
         terapkanFilter()
+    }
+
+    // Memperbarui tampilan status favorit
+    fun perbaruiSemuaIkonFavorit() {
+        notifyDataSetChanged()
     }
 
     // Menggabungkan filter kategori dan pencarian

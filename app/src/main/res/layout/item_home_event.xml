@@ -43,10 +43,13 @@
 
         <!-- TOMBOL FAVORIT -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardFavorite"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="12dp"
+            android:clickable="true"
+            android:focusable="true"
             app:cardBackgroundColor="#FFFFFF"
             app:cardCornerRadius="16dp"
             app:strokeWidth="0dp"
@@ -54,12 +57,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:id="@+id/ivFavorite"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="6dp"
                 android:src="@drawable/heart"
                 app:tint="@color/coral" />
-
         </com.google.android.material.card.MaterialCardView>
 
         <!-- COUNTDOWN EVENT -->

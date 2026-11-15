@@ -6,38 +6,56 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.projek_ghania_mobile.R
 import com.example.projek_ghania_mobile.databinding.FragmentJelajahiBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
 class JelajahiFragment : Fragment() {
 
     private var _binding: FragmentJelajahiBinding? = null
     private val binding get() = _binding!!
-    private val eventList = listOf(
-        JelajahiModel("Riau Creative Fest 2026", "Bandar Seni Raja Ali Haji", R.drawable.event_pku),
-        JelajahiModel("Pameran Seni PopKraf", "Pustaka Wilayah Soeman HS", R.drawable.event_pku),
-        JelajahiModel("Bazar UMKM Mahasiswa", "Kampus Politeknik Caltex Riau", R.drawable.event_pku),
-        JelajahiModel("Pekanbaru Culinary Night", "Jalan Arifin Ahmad", R.drawable.event_pku),
-        JelajahiModel("Festival Musik Indie", "Riau Garden", R.drawable.event_pku)
-    )
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentJelajahiBinding.inflate(inflater, container, false)
+        _binding = FragmentJelajahiBinding.inflate(
+            inflater,
+            container,
+            false
+        )
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
-        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = ""
+        // Mengatur Toolbar
+        (requireActivity() as AppCompatActivity)
+            .setSupportActionBar(binding.toolbar)
 
-        val adapter = JelajahiAdapter(requireContext(), eventList)
-        binding.lvEvent.adapter = adapter
+        (requireActivity() as AppCompatActivity)
+            .supportActionBar?.title = ""
 
+        // Memasang adapter ke ViewPager2
+        val pagerAdapter = JelajahiPagerAdapter(this)
+        binding.viewPagerJelajahi.adapter = pagerAdapter
+
+        // Menghubungkan TabLayout dengan ViewPager2
+        TabLayoutMediator(
+            binding.tabLayoutJelajahi,
+            binding.viewPagerJelajahi
+        ) { tab, position ->
+
+            when (position) {
+                0 -> tab.text = "Semua Event"
+                1 -> tab.text = "Favorit Saya"
+            }
+
+        }.attach()
     }
 
     override fun onDestroyView() {
