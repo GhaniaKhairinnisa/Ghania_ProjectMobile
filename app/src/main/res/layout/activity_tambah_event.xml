@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+
+    <!-- Toolbar PopKraf -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:elevation="2dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarTambahEvent"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="8dp"
+                android:paddingEnd="16dp">
+
+                <TextView
+                    android:id="@+id/tvTitleToolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_extrabold"
+                    android:text="Tambah Event"
+                    android:textColor="#20263A"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_profil"
+                    android:contentDescription="Profil"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Isi form dapat di-scroll -->
+    <ScrollView
+        android:id="@+id/scrollTambahEvent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="24dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- Card utama form -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardFormTambahEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="3dp"
+            app:strokeColor="#FFF0E6"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Poster -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Poster Event"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textColor="#292929"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imgPosterEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#FFE5D1"
+                    android:contentDescription="Poster event yang dipilih"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/event_pku" />
+
+                <Button
+                    android:id="@+id/btnPilihPoster"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="@color/coral"
+                    android:textAllCaps="false"
+                    android:text="Pilih Poster dari Galeri" />
+
+                <!-- Nama event -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Nama Event"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textColor="#292929"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edtNamaEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukkan nama event"
+                    android:fontFamily="@font/nunito_regular"
+                    android:textColor="#292929"
+                    android:textSize="14sp"
+                    android:backgroundTint="@color/active_button"
+                    android:inputType="textCapSentences"
+                    android:minHeight="48dp" />
+
+                <!-- Kategori -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Kategori Event"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textColor="#292929"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edtKategoriEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contoh: Musik, Kuliner, Fashion"
+                    android:fontFamily="@font/nunito_regular"
+                    android:textColor="#292929"
+                    android:textSize="14sp"
+                    android:backgroundTint="@color/active_button"
+                    android:inputType="textCapSentences"
+                    android:minHeight="48dp" />
+
+                <!-- Lokasi -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Lokasi Event"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textColor="#292929"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edtLokasiEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukkan lokasi event"
+                    android:fontFamily="@font/nunito_regular"
+                    android:textColor="#292929"
+                    android:textSize="14sp"
+                    android:backgroundTint="@color/active_button"
+                    android:inputType="textCapSentences"
+                    android:minHeight="48dp" />
+
+                <!-- Tanggal dan waktu -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Tanggal dan Waktu"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textColor="#292929"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnTanggalMulai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="@color/coral"
+                    android:textAllCaps="false"
+                    android:text="Pilih Tanggal &amp; Waktu Mulai" />
+
+                <Button
+                    android:id="@+id/btnTanggalSelesai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="@color/coral"
+                    android:textAllCaps="false"
+                    android:text="Pilih Tanggal &amp; Waktu Selesai" />
+
+                <!-- Jumlah tenant -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Jumlah Tenant"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textColor="#292929"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edtJumlahTenant"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukkan jumlah tenant"
+                    android:fontFamily="@font/nunito_regular"
+                    android:textColor="#292929"
+                    android:textSize="14sp"
+                    android:backgroundTint="@color/active_button"
+                    android:inputType="number"
+                    android:minHeight="48dp" />
+
+                <!-- Harga tiket -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Harga Tiket"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textColor="#292929"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edtHargaMinimum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Harga minimum tiket"
+                    android:fontFamily="@font/nunito_regular"
+                    android:textColor="#292929"
+                    android:textSize="14sp"
+                    android:backgroundTint="@color/active_button"
+                    android:inputType="number"
+                    android:minHeight="48dp" />
+
+                <EditText
+                    android:id="@+id/edtHargaRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Harga tiket regular"
+                    android:fontFamily="@font/nunito_regular"
+                    android:textColor="#292929"
+                    android:textSize="14sp"
+                    android:backgroundTint="@color/active_button"
+                    android:inputType="number"
+                    android:minHeight="48dp" />
+
+                <EditText
+                    android:id="@+id/edtHargaVip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Harga tiket VIP"
+                    android:fontFamily="@font/nunito_regular"
+                    android:textColor="#292929"
+                    android:textSize="14sp"
+                    android:backgroundTint="@color/active_button"
+                    android:inputType="number"
+                    android:minHeight="48dp" />
+
+                <EditText
+                    android:id="@+id/edtHargaBundling"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Harga tiket bundling"
+                    android:fontFamily="@font/nunito_regular"
+                    android:textColor="#292929"
+                    android:textSize="14sp"
+                    android:backgroundTint="@color/active_button"
+                    android:inputType="number"
+                    android:minHeight="48dp" />
+
+                <!-- Tombol simpan -->
+                <Button
+                    android:id="@+id/btnSimpanEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="@color/coral"
+                    android:textAllCaps="false"
+                    android:text="Simpan Event" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,5 +4,6 @@ data class JelajahiModel(
     val namaEvent: String,
     val lokasiEvent: String,
     val gambarEvent: Int,
-    val id: Int
+    val id: Int,
+    val posterUri: String? = null
 )

@@ -1,10 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="400dp"
-    android:height="150dp"
-    android:viewportWidth="400"
-    android:viewportHeight="150">
+    android:width="360dp"
+    android:height="220dp"
+    android:viewportWidth="360"
+    android:viewportHeight="220">
+
+    <!-- Wave lavender utama -->
     <path
-        android:fillColor="@color/mint"
-        android:pathData="M 0,0 L 0,100 Q 25,130 50,100 Q 75,130 100,100 Q 125,130 150,100 Q 175,130 200,100 Q 225,130 250,100 Q 275,130 300,100 Q 325,130 350,100 Q 375,130 400,100 L 400,0 Z" />
+        android:fillColor="#E9E4FF"
+        android:pathData="M0,0
+            L360,0
+            L360,105
+            C315,145 270,155 220,135
+            C165,112 125,115 80,145
+            C45,168 20,170 0,165
+            Z" />
+
+    <!-- Wave lavender lebih lembut -->
+    <path
+        android:fillColor="#DCD3FF"
+        android:pathData="M0,0
+            L360,0
+            L360,65
+            C305,100 280,125 225,115
+            C165,100 120,125 75,155
+            C45,175 20,180 0,178
+            Z" />
+
+    <!-- Aksen coral di sudut kanan atas -->
+    <path
+        android:fillColor="#FFB8B8"
+        android:pathData="M245,0
+            L360,0
+            L360,75
+            C325,105 290,100 265,75
+            C250,60 245,35 245,0
+            Z" />
+
+    <!-- Lapisan mint pada bagian bawah wave -->
+    <path
+        android:fillColor="#B8F0D4"
+        android:pathData="M0,145
+            C55,155 95,115 150,125
+            C215,140 270,175 360,115
+            L360,165
+            C285,205 220,165 155,155
+            C95,145 50,190 0,185
+            Z" />
+
+    <!-- Garis dekoratif putih -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M0,175
+            C55,160 85,115 145,120
+            C205,125 245,150 300,110
+            C325,92 345,75 360,65" />
+
+    <!-- Aksen cobalt kecil -->
+    <path
+        android:fillColor="#3D6FE8"
+        android:pathData="M28,38
+            A4,4 0,1 0 36,38
+            A4,4 0,1 0 28,38
+            Z" />
+
+    <path
+        android:fillColor="#3D6FE8"
+        android:pathData="M52,55
+            A3,3 0,1 0 58,55
+            A3,3 0,1 0 52,55
+            Z" />
+
+    <path
+        android:fillColor="#3D6FE8"
+        android:pathData="M70,34
+            A3,3 0,1 0 76,34
+            A3,3 0,1 0 70,34
+            Z" />
+
+    <!-- Aksen kuning pop -->
+    <path
+        android:fillColor="#FFD95A"
+        android:pathData="M305,125
+            L318,118
+            L321,124
+            L308,132
+            Z" />
+
+    <path
+        android:fillColor="#FFD95A"
+        android:pathData="M326,140
+            L340,136
+            L342,142
+            L328,146
+            Z" />
+
 </vector>

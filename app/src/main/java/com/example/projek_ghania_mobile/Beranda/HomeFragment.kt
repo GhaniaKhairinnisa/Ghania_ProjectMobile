@@ -1,4 +1,3 @@
-
 package com.example.projek_ghania_mobile.Beranda
 
 import android.content.Context
@@ -10,15 +9,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projek_ghania_mobile.Beranda.HomeEvent.HomeEventAdapter
 import com.example.projek_ghania_mobile.Beranda.HomeEvent.HomeEventModel
+import com.example.projek_ghania_mobile.Data.AppDatabase
+import com.example.projek_ghania_mobile.Data.Entity.EventEntity
+import com.example.projek_ghania_mobile.Data.Entity.FavoriteEntity
+import com.example.projek_ghania_mobile.FavoritManager.toggleFavorite
 import com.example.projek_ghania_mobile.LoginActivity
 import com.example.projek_ghania_mobile.R
 import com.example.projek_ghania_mobile.databinding.ActivityHomeFragmentBinding
 import com.google.android.material.chip.Chip
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.text.NumberFormat
+import java.time.Instant
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 class HomeFragment : Fragment() {
 
@@ -26,6 +40,9 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var homeEventAdapter: HomeEventAdapter
+
+    private var favoriteEventIds: Set<Int> = emptySet()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,7 +70,13 @@ class HomeFragment : Fragment() {
         setupRecyclerView()
         setupFilterKategori()
         setupPencarian()
+
+        binding.btnDaftarTenant.setOnClickListener {
+            val intent = Intent(requireContext(), TambahEventActivity::class.java)
+            startActivity(intent)
+        }
     }
+
 
     // Mengatur menu toolbar
     private fun setupToolbar() {
@@ -146,15 +169,20 @@ class HomeFragment : Fragment() {
     // Mengatur RecyclerView dan Adapter event
     private fun setupRecyclerView() {
 
-        homeEventAdapter = HomeEventAdapter(requireContext()) {
+        homeEventAdapter = HomeEventAdapter(
+            context = requireContext(),
 
-            val intent = Intent(
-                requireContext(),
-                DetailActivity::class.java
-            )
+            onEventClick = { event ->
+                val intent = Intent(requireContext(), DetailActivity::class.java)
+                intent.putExtra("eventId", event.id)
+                startActivity(intent)
+            },
 
-            startActivity(intent)
-        }
+            onFavoriteClick = { eventId ->
+                toggleFavorite(eventId)
+            }
+        )
+
 
         binding.rvHomeEvent.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -163,109 +191,99 @@ class HomeFragment : Fragment() {
             setHasFixedSize(false)
         }
 
-        // Daftar data event PopKraf
-        val daftarEvent = listOf(
+        // Mengambil data event dari Room Database
+        observeEvents()
 
-            HomeEventModel(
-                id = 1,
-                gambarEvent = R.drawable.event_pku,
-                kategori = listOf("Bazar", "UMKM", "Musik"),
-                lokasi = "📍 Bandar Seni Raja Ali Haji",
-                namaEvent = "Riau Creative Fest 2026",
-                tanggalWaktu = "📅 12 Des 2026   ⏰ 09.00–20.00 WIB",
-                hitungMundur = "🔥 MULAI 02:14:36",
-                jumlahTenant = "🏪 80+ Tenants",
-                hargaTiket = "Mulai Rp 25.000"
-            ),
+        observeFavorites()
+    }
 
-            HomeEventModel(
-                id = 2,
-                gambarEvent = R.drawable.event_pku,
-                kategori = listOf("Pameran", "Komunitas"),
-                lokasi = "📍 Taman Budaya Pekanbaru",
-                namaEvent = "Pekanbaru Art Exhibition",
-                tanggalWaktu = "📅 18 Des 2026   ⏰ 10.00–18.00 WIB",
-                hitungMundur = "🔥 SEGERA HADIR",
-                jumlahTenant = "🎨 25+ Kreator",
-                hargaTiket = "Mulai Rp 15.000"
-            ),
+    // Mengamati data event dari Room Database
+    private fun observeEvents() {
 
-            HomeEventModel(
-                id = 3,
-                gambarEvent = R.drawable.event_pku,
-                kategori = listOf("Bazar", "Kuliner", "Festival"),
-                lokasi = "📍 Lapangan Purna MTQ Pekanbaru",
-                namaEvent = "Festival Kuliner Riau",
-                tanggalWaktu = "📅 20 Des 2026   ⏰ 11.00–21.00 WIB",
-                hitungMundur = "🔥 SEGERA HADIR",
-                jumlahTenant = "🍜 50+ Tenant",
-                hargaTiket = "Gratis Masuk"
-            ),
+        val eventDao = AppDatabase
+            .getDatabase(requireContext())
+            .eventDao()
 
-            HomeEventModel(
-                id = 4,
-                gambarEvent = R.drawable.event_pku,
-                kategori = listOf("Musik", "Festival"),
-                lokasi = "📍 Lapangan Purna MTQ Pekanbaru",
-                namaEvent = "Pekanbaru Indie Music Day",
-                tanggalWaktu = "📅 26 Des 2026   ⏰ 15.00–22.00 WIB",
-                hitungMundur = "🔥 SEGERA HADIR",
-                jumlahTenant = "🎵 12+ Musisi",
-                hargaTiket = "Mulai Rp 35.000"
-            ),
+        viewLifecycleOwner.lifecycleScope.launch {
 
-            HomeEventModel(
-                id = 5,
-                gambarEvent = R.drawable.event_pku,
-                kategori = listOf("UMKM", "Bazar"),
-                lokasi = "📍 Mall Pekanbaru",
-                namaEvent = "UMKM Creative Market",
-                tanggalWaktu = "📅 03 Jan 2027   ⏰ 10.00–21.00 WIB",
-                hitungMundur = "🔥 SEGERA HADIR",
-                jumlahTenant = "🏪 40+ UMKM",
-                hargaTiket = "Gratis Masuk"
-            ),
+            viewLifecycleOwner.repeatOnLifecycle(
+                Lifecycle.State.STARTED
+            ) {
 
-            HomeEventModel(
-                id = 6,
-                gambarEvent = R.drawable.event_pku,
-                kategori = listOf("Workshop", "Komunitas"),
-                lokasi = "📍 Gedung Kreatif Pekanbaru",
-                namaEvent = "Creative Workshop Day",
-                tanggalWaktu = "📅 09 Jan 2027   ⏰ 09.00–16.00 WIB",
-                hitungMundur = "🔥 SEGERA HADIR",
-                jumlahTenant = "👥 8+ Kelas",
-                hargaTiket = "Mulai Rp 20.000"
-            ),
+                eventDao.getAllEvents().collect { dataEvent ->
 
-            HomeEventModel(
-                id = 7,
-                gambarEvent = R.drawable.event_pku,
-                kategori = listOf("Pameran", "UMKM", "Workshop"),
-                lokasi = "📍 Taman Budaya Pekanbaru",
-                namaEvent = "Riau Craft & Handmade Expo",
-                tanggalWaktu = "📅 16 Jan 2027   ⏰ 10.00–19.00 WIB",
-                hitungMundur = "🔥 SEGERA HADIR",
-                jumlahTenant = "🎨 35+ Kreator",
-                hargaTiket = "Mulai Rp 10.000"
-            ),
+                    val daftarEvent = dataEvent.map { event ->
 
-            HomeEventModel(
-                id = 8,
-                gambarEvent = R.drawable.event_pku,
-                kategori = listOf("Komunitas", "Musik", "Festival"),
-                lokasi = "📍 Bandar Seni Raja Ali Haji",
-                namaEvent = "Pekanbaru Creative Community Day",
-                tanggalWaktu = "📅 23 Jan 2027   ⏰ 13.00–21.00 WIB",
-                hitungMundur = "🔥 SEGERA HADIR",
-                jumlahTenant = "👥 20+ Komunitas",
-                hargaTiket = "Gratis Masuk"
-            )
+                        konversiEventKeModel(event)
+                    }
 
+                    // Memasukkan data event ke Adapter
+                    homeEventAdapter.setData(daftarEvent)
+                }
+            }
+        }
+    }
+
+    // Mengubah EventEntity dari Room menjadi HomeEventModel
+    private fun konversiEventKeModel(
+        event: EventEntity
+    ): HomeEventModel {
+
+        val zonaWaktu = ZoneId.of("Asia/Jakarta")
+
+        val waktuMulai = Instant
+            .ofEpochMilli(event.startDateTimeMillis)
+            .atZone(zonaWaktu)
+
+        val waktuSelesai = Instant
+            .ofEpochMilli(event.endDateTimeMillis)
+            .atZone(zonaWaktu)
+
+        val formatterTanggal = DateTimeFormatter
+            .ofPattern("dd MMM yyyy", Locale("id", "ID"))
+
+        val formatterWaktu = DateTimeFormatter
+            .ofPattern("HH.mm", Locale("id", "ID"))
+
+        val tanggalWaktu =
+            "📅 ${waktuMulai.format(formatterTanggal)}   " +
+                    "⏰ ${waktuMulai.format(formatterWaktu)}–" +
+                    "${waktuSelesai.format(formatterWaktu)} WIB"
+
+        val waktuSekarang = System.currentTimeMillis()
+
+        val statusEvent = when {
+            waktuSekarang < event.startDateTimeMillis ->
+                "🔥 SEGERA HADIR"
+
+            waktuSekarang <= event.endDateTimeMillis ->
+                "🔥 SEDANG BERLANGSUNG"
+
+            else ->
+                "🔥 EVENT SELESAI"
+        }
+
+        val hargaTiket = if (event.minTicketPrice == 0) {
+            "Gratis Masuk"
+        } else {
+            val formatHarga = NumberFormat
+                .getNumberInstance(Locale("id", "ID"))
+
+            "Mulai Rp ${formatHarga.format(event.minTicketPrice)}"
+        }
+
+        return HomeEventModel(
+            id = event.eventId,
+            gambarEvent = event.imageResId,
+            kategori = event.categories.split("|"),
+            lokasi = event.location,
+            namaEvent = event.eventName,
+            tanggalWaktu = tanggalWaktu,
+            hitungMundur = statusEvent,
+            jumlahTenant = "🏪 ${event.tenantCount}+ Tenants",
+            hargaTiket = hargaTiket,
+            posterUri = event.posterUri
         )
-
-        // Memasukkan data event ke Adapter
-        homeEventAdapter.setData(daftarEvent)
     }
 
     // Mengatur filter kategori event
@@ -315,6 +333,40 @@ class HomeFragment : Fragment() {
                 // Tidak ada proses setelah teks berubah
             }
         })
+    }
+
+    private fun toggleFavorite(eventId: Int) {
+        val favoriteDao = AppDatabase
+            .getDatabase(requireContext())
+            .favoriteDao()
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            withContext(Dispatchers.IO) {
+                if (favoriteEventIds.contains(eventId)) {
+                    favoriteDao.deleteFavorite(eventId)
+                } else {
+                    favoriteDao.insertFavorite(
+                        FavoriteEntity(eventId = eventId)
+                    )
+                }
+            }
+        }
+    }
+
+    private fun observeFavorites() {
+        val favoriteDao = AppDatabase
+            .getDatabase(requireContext())
+            .favoriteDao()
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                favoriteDao.getFavoriteEventIds().collect { ids ->
+                    favoriteEventIds = ids.toSet()
+
+                    homeEventAdapter.setFavoriteEventIds(ids)
+                }
+            }
+        }
     }
 
     override fun onResume() {

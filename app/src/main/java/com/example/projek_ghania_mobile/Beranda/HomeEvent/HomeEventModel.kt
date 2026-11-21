@@ -10,5 +10,6 @@ data class HomeEventModel(
     val tanggalWaktu: String,
     val hitungMundur: String,
     val jumlahTenant: String,
-    val hargaTiket: String
+    val hargaTiket: String,
+    val posterUri: String? = null
 )

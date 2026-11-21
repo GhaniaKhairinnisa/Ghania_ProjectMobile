@@ -146,6 +146,7 @@
                     app:useDefaultMargins="true">
 
                     <TextView
+                        android:id="@+id/tvTag1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_tag_rounded"
@@ -161,6 +162,7 @@
                         app:layout_gravity="fill_horizontal" />
 
                     <TextView
+                        android:id="@+id/tvTag2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_tag_rounded"
@@ -178,6 +180,7 @@
                         app:layout_row="0" />
 
                     <TextView
+                        android:id="@+id/tvTag3"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_tag_rounded"
@@ -244,6 +247,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvDetailDate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_bold"
@@ -252,6 +256,7 @@
                             android:textSize="15sp" />
 
                         <TextView
+                            android:id="@+id/tvDetailTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_regular"
@@ -290,6 +295,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvDetailPrice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_bold"
@@ -298,6 +304,7 @@
                             android:textSize="15sp" />
 
                         <TextView
+                            android:id="@+id/tvDetailTenant"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_bold"
@@ -358,6 +365,7 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
+                                android:id="@+id/tvLocationAddress"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"

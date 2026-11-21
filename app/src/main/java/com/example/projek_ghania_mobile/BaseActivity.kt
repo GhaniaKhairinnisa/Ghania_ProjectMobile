@@ -1,4 +1,3 @@
-
 package com.example.projek_ghania_mobile
 
 import android.os.Bundle
@@ -7,12 +6,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.projek_ghania_mobile.Beranda.HomeFragment
+import com.example.projek_ghania_mobile.Data.AppDatabase
+import com.example.projek_ghania_mobile.Data.Seed.EventSeeder
 import com.example.projek_ghania_mobile.Jelajahi.JelajahiFragment
 import com.example.projek_ghania_mobile.Kalender.KalenderFragment
 import com.example.projek_ghania_mobile.Profile.ProfileFragment
 import com.example.projek_ghania_mobile.Tiket.TiketFragment
 import com.example.projek_ghania_mobile.databinding.ActivityBaseBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class BaseActivity : AppCompatActivity() {
 
@@ -25,6 +30,15 @@ class BaseActivity : AppCompatActivity() {
 
         binding = ActivityBaseBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        lifecycleScope.launch {
+            withContext(Dispatchers.IO) {
+                val database = AppDatabase.getDatabase(applicationContext)
+                val eventDao = database.eventDao()
+
+                EventSeeder.seedIfEmpty(eventDao)
+            }
+        }
 
         // Mengatur jarak terhadap status bar dan navigation bar Android
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->

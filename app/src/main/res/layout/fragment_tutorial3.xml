@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     android:background="@color/bg">
 
+    <!-- Header wave background -->
+    <ImageView
+        android:id="@+id/ivTutorialWave"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:src="@drawable/bg_header_wafe"
+        android:scaleType="fitXY"
+        android:contentDescription="@null"
+        android:importantForAccessibility="no"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardGambar3"
         android:layout_width="280dp"

@@ -3,19 +3,20 @@ package com.example.projek_ghania_mobile.Beranda.HomeEvent
 
 import android.content.Context
 import android.graphics.Color
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.projek_ghania_mobile.FavoritManager
 import com.example.projek_ghania_mobile.R
 import com.example.projek_ghania_mobile.databinding.ItemHomeEventBinding
 import com.google.android.material.card.MaterialCardView
 
 class HomeEventAdapter(
     private val context: Context,
-    private val onEventClick: (HomeEventModel) -> Unit
+    private val onEventClick: (HomeEventModel) -> Unit,
+    private val onFavoriteClick: (Int) -> Unit
 ) : RecyclerView.Adapter<HomeEventAdapter.EventViewHolder>() {
 
     // Menyimpan seluruh data event
@@ -23,6 +24,9 @@ class HomeEventAdapter(
 
     // Menyimpan event yang sesuai dengan filter dan pencarian
     private val eventDitampilkan = mutableListOf<HomeEventModel>()
+
+    // Menyimpan ID event yang sedang difavoritkan
+    private var favoriteEventIds = emptySet<Int>()
 
     // Menyimpan kategori yang sedang dipilih
     private var kategoriTerpilih = emptyList<String>()
@@ -60,7 +64,11 @@ class HomeEventAdapter(
         val binding = holder.binding
 
         // Menampilkan informasi event
-        binding.ivEventImage.setImageResource(event.gambarEvent)
+        if (!event.posterUri.isNullOrBlank()) {
+            binding.ivEventImage.setImageURI(Uri.parse(event.posterUri))
+        } else {
+            binding.ivEventImage.setImageResource(event.gambarEvent)
+        }
         binding.tvLocationEvent.text = event.lokasi
         binding.tvEventTitle.text = event.namaEvent
         binding.tvEventDateTime.text = event.tanggalWaktu
@@ -119,14 +127,7 @@ class HomeEventAdapter(
             val posisiSekarang = holder.bindingAdapterPosition
 
             if (posisiSekarang != RecyclerView.NO_POSITION) {
-
-                FavoritManager.toggleFavorite(
-                    context,
-                    event.id
-                )
-
-                // Memperbarui warna ikon hati
-                perbaruiIkonFavorit(event, holder)
+                onFavoriteClick(event.id)
             }
         }
 
@@ -142,10 +143,7 @@ class HomeEventAdapter(
         holder: EventViewHolder
     ) {
 
-        val sudahFavorit = FavoritManager.isFavorite(
-            context,
-            event.id
-        )
+        val sudahFavorit = favoriteEventIds.contains(event.id)
 
         val warnaIkon = if (sudahFavorit) {
             R.color.coral
@@ -157,6 +155,14 @@ class HomeEventAdapter(
             android.content.res.ColorStateList.valueOf(
                 context.getColor(warnaIkon)
             )
+    }
+
+    // Memperbarui daftar ID event favorit dari Room
+    fun setFavoriteEventIds(eventIds: List<Int>) {
+
+        favoriteEventIds = eventIds.toSet()
+
+        notifyDataSetChanged()
     }
 
     // Menghitung jumlah event yang ditampilkan
