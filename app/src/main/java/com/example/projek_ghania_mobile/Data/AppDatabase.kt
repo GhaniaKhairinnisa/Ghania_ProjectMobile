@@ -6,36 +6,38 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.projek_ghania_mobile.Dao.TenantDao
+
 import com.example.projek_ghania_mobile.Data.Dao.EventDao
 import com.example.projek_ghania_mobile.Data.Dao.FavoriteDao
 import com.example.projek_ghania_mobile.Data.Dao.TenantRegistrationDao
+import com.example.projek_ghania_mobile.Data.Dao.TiketDao
+
 import com.example.projek_ghania_mobile.Data.Entity.EventEntity
 import com.example.projek_ghania_mobile.Data.Entity.FavoriteEntity
 import com.example.projek_ghania_mobile.Data.Entity.TenantEntity
 import com.example.projek_ghania_mobile.Data.Entity.TenantRegistrationEntity
+import com.example.projek_ghania_mobile.Data.Entity.TiketEntity
 
 @Database(
     entities = [
         EventEntity::class,
         FavoriteEntity::class,
         TenantEntity::class,
-        TenantRegistrationEntity::class
+        TenantRegistrationEntity::class,
+        TiketEntity::class
     ],
-    version = 5,
+    version = 6,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun eventDao(): EventDao
-
     abstract fun favoriteDao(): FavoriteDao
-
     abstract fun tenantDao(): TenantDao
-
     abstract fun tenantRegistrationDao(): TenantRegistrationDao
+    abstract fun tiketDao(): TiketDao
 
     companion object {
-
         @Volatile
         private var INSTANCE: AppDatabase? = null
 

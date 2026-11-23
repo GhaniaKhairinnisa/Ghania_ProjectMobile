@@ -1,3 +1,4 @@
+
 package com.example.projek_ghania_mobile.Beranda
 
 import android.app.DatePickerDialog
@@ -18,6 +19,8 @@ import com.example.projek_ghania_mobile.Data.AppDatabase
 import com.example.projek_ghania_mobile.Data.Entity.EventEntity
 import com.example.projek_ghania_mobile.R
 import com.example.projek_ghania_mobile.databinding.ActivityTambahEventBinding
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -35,15 +38,13 @@ class TambahEventActivity : AppCompatActivity() {
 
     // URI poster yang sudah disimpan ke penyimpanan internal aplikasi
     private var posterUri: String? = null
-
     private var tanggalMulaiMillis: Long? = null
     private var tanggalSelesaiMillis: Long? = null
 
     private lateinit var btnTanggalMulai: Button
     private lateinit var btnTanggalSelesai: Button
-
     private lateinit var edtNamaEvent: EditText
-    private lateinit var edtKategoriEvent: EditText
+    private lateinit var chipGroupKategoriEvent: ChipGroup
     private lateinit var edtLokasiEvent: EditText
     private lateinit var edtJumlahTenant: EditText
     private lateinit var edtHargaMinimum: EditText
@@ -115,7 +116,8 @@ class TambahEventActivity : AppCompatActivity() {
         }
 
         edtNamaEvent = findViewById(R.id.edtNamaEvent)
-        edtKategoriEvent = findViewById(R.id.edtKategoriEvent)
+        chipGroupKategoriEvent =
+            findViewById(R.id.chipGroupKategoriEvent)
         edtLokasiEvent = findViewById(R.id.edtLokasiEvent)
         edtJumlahTenant = findViewById(R.id.edtJumlahTenant)
         edtHargaMinimum = findViewById(R.id.edtHargaMinimum)
@@ -238,7 +240,20 @@ class TambahEventActivity : AppCompatActivity() {
     private fun simpanEvent() {
 
         val namaEvent = edtNamaEvent.text.toString().trim()
-        val kategoriEvent = edtKategoriEvent.text.toString().trim()
+
+        // Mengambil kategori yang dipilih dari ChipGroup
+        val kategoriTerpilih = chipGroupKategoriEvent.checkedChipIds
+            .mapNotNull { chipId ->
+                findViewById<Chip>(chipId)
+                    ?.text
+                    ?.toString()
+                    ?.trim()
+                    ?.takeIf { it.isNotEmpty() }
+            }
+
+        // Menggabungkan kategori dengan pemisah |
+        val kategoriEvent = kategoriTerpilih.joinToString("|")
+
         val lokasiEvent = edtLokasiEvent.text.toString().trim()
 
         val jumlahTenant = edtJumlahTenant.text.toString().toIntOrNull()
@@ -249,7 +264,7 @@ class TambahEventActivity : AppCompatActivity() {
 
         // Validasi input teks
         if (namaEvent.isEmpty() ||
-            kategoriEvent.isEmpty() ||
+            kategoriTerpilih.isEmpty() ||
             lokasiEvent.isEmpty()
         ) {
             Toast.makeText(

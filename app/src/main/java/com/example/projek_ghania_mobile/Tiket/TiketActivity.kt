@@ -1,6 +1,6 @@
-
 package com.example.projek_ghania_mobile.Tiket
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -8,8 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import com.example.projek_ghania_mobile.BaseActivity
 import com.example.projek_ghania_mobile.Data.AppDatabase
 import com.example.projek_ghania_mobile.Data.Entity.EventEntity
+import com.example.projek_ghania_mobile.Data.Entity.TiketEntity
 import com.example.projek_ghania_mobile.R
 import com.example.projek_ghania_mobile.databinding.ActivityTiketBinding
 import kotlinx.coroutines.Dispatchers
@@ -20,6 +22,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
+import java.util.UUID
 
 class TiketActivity : AppCompatActivity() {
 
@@ -413,11 +416,136 @@ class TiketActivity : AppCompatActivity() {
                                     "secara nyata."
                         )
                         .setPositiveButton("Selesai") { _, _ ->
-                            finish()
+                            simpanTiketDanKembali()
                         }
                         .show()
                 }
                 .show()
+        }
+    }
+
+    // ==============================
+    // MENYIMPAN TIKET KE ROOM
+    // ==============================
+
+    private fun simpanTiketDanKembali() {
+
+        val dataEvent = event
+
+        if (dataEvent == null) {
+            AlertDialog.Builder(this)
+                .setTitle("Gagal Menyimpan Tiket")
+                .setMessage("Data event tidak tersedia.")
+                .setPositiveButton("Mengerti", null)
+                .show()
+
+            return
+        }
+
+        val daftarTiket = mutableListOf<TiketEntity>()
+        val waktuPembelian = System.currentTimeMillis()
+
+        // Menambahkan tiket Regular Pass
+        repeat(jumlahRegular) {
+            daftarTiket.add(
+                TiketEntity(
+                    ticketId = "PKF-${UUID.randomUUID()}",
+                    eventId = dataEvent.eventId,
+                    eventName = dataEvent.eventName,
+                    startDateTimeMillis = dataEvent.startDateTimeMillis,
+                    location = dataEvent.location,
+                    ticketType = "Regular Pass",
+                    ticketPrice = hargaRegular,
+                    paymentMethod = metodePembayaran,
+                    purchasedAtMillis = waktuPembelian
+                )
+            )
+        }
+
+        // Menambahkan tiket VIP + Merchandise
+        repeat(jumlahVip) {
+            daftarTiket.add(
+                TiketEntity(
+                    ticketId = "PKF-${UUID.randomUUID()}",
+                    eventId = dataEvent.eventId,
+                    eventName = dataEvent.eventName,
+                    startDateTimeMillis = dataEvent.startDateTimeMillis,
+                    location = dataEvent.location,
+                    ticketType = "VIP + Merchandise",
+                    ticketPrice = hargaVip,
+                    paymentMethod = metodePembayaran,
+                    purchasedAtMillis = waktuPembelian
+                )
+            )
+        }
+
+        // Menambahkan tiket Bundling Voucher UMKM
+        repeat(jumlahBundling) {
+            daftarTiket.add(
+                TiketEntity(
+                    ticketId = "PKF-${UUID.randomUUID()}",
+                    eventId = dataEvent.eventId,
+                    eventName = dataEvent.eventName,
+                    startDateTimeMillis = dataEvent.startDateTimeMillis,
+                    location = dataEvent.location,
+                    ticketType = "Bundling Voucher UMKM",
+                    ticketPrice = hargaBundling,
+                    paymentMethod = metodePembayaran,
+                    purchasedAtMillis = waktuPembelian
+                )
+            )
+        }
+
+        lifecycleScope.launch {
+
+            try {
+
+                // Menyimpan tiket ke database Room
+                withContext(Dispatchers.IO) {
+                    AppDatabase.getDatabase(applicationContext)
+                        .tiketDao()
+                        .insertDaftarTiket(daftarTiket)
+                }
+
+                // Dialog setelah tiket berhasil disimpan
+                AlertDialog.Builder(this@TiketActivity)
+                    .setTitle("Tiket Berhasil Disimpan")
+                    .setMessage(
+                        "Tiket berhasil disimpan ke Dompet Tiket."
+                    )
+                    .setPositiveButton("Lihat Tiket") { _, _ ->
+
+                        // Membuka BaseActivity dan menu Dompet Tiket
+                        val intent = Intent(
+                            this@TiketActivity,
+                            BaseActivity::class.java
+                        ).apply {
+
+                            putExtra(
+                                BaseActivity.EXTRA_OPEN_TICKET_WALLET,
+                                true
+                            )
+
+                            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                                    Intent.FLAG_ACTIVITY_SINGLE_TOP
+                        }
+
+                        startActivity(intent)
+                    }
+                    .show()
+
+            } catch (e: Exception) {
+
+                AlertDialog.Builder(this@TiketActivity)
+                    .setTitle("Gagal Menyimpan Tiket")
+                    .setMessage(
+                        "Tiket belum berhasil disimpan. " +
+                                "Silakan coba kembali.\n\n" +
+                                "Detail: ${e.message}"
+                    )
+                    .setPositiveButton("Mengerti", null)
+                    .show()
+            }
         }
     }
 

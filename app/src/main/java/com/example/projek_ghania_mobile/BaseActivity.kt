@@ -23,6 +23,10 @@ class BaseActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBaseBinding
 
+    companion object {
+        const val EXTRA_OPEN_TICKET_WALLET = "open_ticket_wallet"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,7 +44,6 @@ class BaseActivity : AppCompatActivity() {
             }
         }
 
-        // Mengatur jarak terhadap status bar dan navigation bar Android
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
 
             val systemBars = insets.getInsets(
@@ -98,5 +101,19 @@ class BaseActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(binding.fragmentContainer.id, fragment)
             .commit()
+    }
+    override fun onNewIntent(intent: android.content.Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+
+        val bukaDompetTiket = intent.getBooleanExtra(
+            EXTRA_OPEN_TICKET_WALLET,
+            false
+        )
+
+        if (bukaDompetTiket) {
+            binding.bottomNavView.selectedItemId = R.id.nav_tiket
+            replaceFragment(TiketFragment())
+        }
     }
 }

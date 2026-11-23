@@ -1,4 +1,3 @@
-
 package com.example.projek_ghania_mobile.Data.Seed
 
 import com.example.projek_ghania_mobile.Data.Dao.EventDao
@@ -12,7 +11,6 @@ object EventSeeder {
 
     suspend fun seedIfEmpty(eventDao: EventDao) {
 
-        // Periksa apakah tabel events sudah memiliki data
         val dataEvent = eventDao.getAllEvents().first()
 
         if (dataEvent.isNotEmpty()) {
@@ -35,7 +33,7 @@ object EventSeeder {
                 eventName = "Riau Creative Fest 2026",
                 imageResId = R.drawable.event_pku,
                 categories = "Bazar|UMKM|Musik",
-                location = "📍 Bandar Seni Raja Ali Haji",
+                location = "Bandar Seni Raja Ali Haji",
                 startDateTimeMillis = konversiWaktu("2026-12-12T09:00:00"),
                 endDateTimeMillis = konversiWaktu("2026-12-12T20:00:00"),
                 tenantCount = 80,
@@ -50,7 +48,7 @@ object EventSeeder {
                 eventName = "Pekanbaru Art Exhibition",
                 imageResId = R.drawable.event_pku,
                 categories = "Pameran|Komunitas",
-                location = "📍 Taman Budaya Pekanbaru",
+                location = "Taman Budaya Pekanbaru",
                 startDateTimeMillis = konversiWaktu("2026-12-18T10:00:00"),
                 endDateTimeMillis = konversiWaktu("2026-12-18T18:00:00"),
                 tenantCount = 25,
@@ -65,7 +63,7 @@ object EventSeeder {
                 eventName = "Festival Kuliner Riau",
                 imageResId = R.drawable.event_pku,
                 categories = "Bazar|Kuliner|Festival",
-                location = "📍 Lapangan Purna MTQ Pekanbaru",
+                location = "Lapangan Purna MTQ Pekanbaru",
                 startDateTimeMillis = konversiWaktu("2026-12-20T11:00:00"),
                 endDateTimeMillis = konversiWaktu("2026-12-20T21:00:00"),
                 tenantCount = 50,
@@ -80,7 +78,7 @@ object EventSeeder {
                 eventName = "Pekanbaru Indie Music Day",
                 imageResId = R.drawable.event_pku,
                 categories = "Musik|Festival",
-                location = "📍 Lapangan Purna MTQ Pekanbaru",
+                location = "Lapangan Purna MTQ Pekanbaru",
                 startDateTimeMillis = konversiWaktu("2026-12-26T15:00:00"),
                 endDateTimeMillis = konversiWaktu("2026-12-26T22:00:00"),
                 tenantCount = 12,
@@ -95,7 +93,7 @@ object EventSeeder {
                 eventName = "UMKM Creative Market",
                 imageResId = R.drawable.event_pku,
                 categories = "UMKM|Bazar",
-                location = "📍 Mall Pekanbaru",
+                location = "Mall Pekanbaru",
                 startDateTimeMillis = konversiWaktu("2027-01-03T10:00:00"),
                 endDateTimeMillis = konversiWaktu("2027-01-03T21:00:00"),
                 tenantCount = 40,
@@ -110,7 +108,7 @@ object EventSeeder {
                 eventName = "Creative Workshop Day",
                 imageResId = R.drawable.event_pku,
                 categories = "Workshop|Komunitas",
-                location = "📍 Gedung Kreatif Pekanbaru",
+                location = "Gedung Kreatif Pekanbaru",
                 startDateTimeMillis = konversiWaktu("2027-01-09T09:00:00"),
                 endDateTimeMillis = konversiWaktu("2027-01-09T16:00:00"),
                 tenantCount = 8,
@@ -125,7 +123,7 @@ object EventSeeder {
                 eventName = "Riau Craft & Handmade Expo",
                 imageResId = R.drawable.event_pku,
                 categories = "Pameran|UMKM|Workshop",
-                location = "📍 Taman Budaya Pekanbaru",
+                location = "Taman Budaya Pekanbaru",
                 startDateTimeMillis = konversiWaktu("2027-01-16T10:00:00"),
                 endDateTimeMillis = konversiWaktu("2027-01-16T19:00:00"),
                 tenantCount = 35,
@@ -140,7 +138,7 @@ object EventSeeder {
                 eventName = "Pekanbaru Creative Community Day",
                 imageResId = R.drawable.event_pku,
                 categories = "Komunitas|Musik|Festival",
-                location = "📍 Bandar Seni Raja Ali Haji",
+                location = "Bandar Seni Raja Ali Haji",
                 startDateTimeMillis = konversiWaktu("2027-01-23T13:00:00"),
                 endDateTimeMillis = konversiWaktu("2027-01-23T21:00:00"),
                 tenantCount = 20,
@@ -151,7 +149,6 @@ object EventSeeder {
             )
         )
 
-        // Simpan seluruh event ke database
         eventDao.insertEvents(daftarEvent)
     }
 }

@@ -193,7 +193,6 @@ class HomeFragment : Fragment() {
 
         // Mengambil data event dari Room Database
         observeEvents()
-
         observeFavorites()
     }
 
@@ -224,7 +223,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-    // Mengubah EventEntity dari Room menjadi HomeEventModel
     private fun konversiEventKeModel(
         event: EventEntity
     ): HomeEventModel {
@@ -275,8 +273,11 @@ class HomeFragment : Fragment() {
         return HomeEventModel(
             id = event.eventId,
             gambarEvent = event.imageResId,
-            kategori = event.categories.split("|"),
-            lokasi = event.location,
+            kategori = event.categories
+                .split(",", "|")
+                .map { it.trim() }
+                .filter { it.isNotEmpty() },
+            lokasi = "📍 ${event.location}",
             namaEvent = event.eventName,
             tanggalWaktu = tanggalWaktu,
             hitungMundur = statusEvent,
